@@ -5,9 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LLM prompts</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.5;
+            color: #333;
+        }
+        p {
+            margin: 0 0 18px 0;
+        }
+  </style>  
 </head>
+  
 <body>
-
  <header>
     <nav aria-label="Main navigation">
       <ul>
@@ -22,10 +32,364 @@
   </header>
 
   <main>
-    <h1></h1>
-    <h2></h2>
-      <p>
-      </p>
+    <h1>Introduction</h1>
+    <p>Large Language Models (LLMs) are artificial intelligence systems trained on massive amounts of textual information in order to understand and generate human language.</p>
+    <p>The purpose of this part of the project is to compare how three different AI models interpret the same question:</p>
+    <p>“What does Caravaggio’s painting ‘Medusa’ represent?”</p>
+
+    <p>The models compared in this project are:</p>
+    <ul>
+        <li>ChatGPT (OpenAI)</li>
+        <li>Gemini (Google)</li>
+        <li>Mistral AI</li>
+    </ul>
+
+    <p>The project also investigates how different prompting strategies influence the quality, structure, and depth of the generated responses.</p>
+
+    <h1>Research Question</h1>
+    <p>Main Question:</p>
+    <p>“What does Caravaggio’s painting ‘Medusa’ represent?”</p>
+
+    <p>The question is especially valuable because it requires interpretation rather than simple memorization of facts. A successful answer must explain symbolism, emotional meaning, and historical context simultaneously.</p>
+
+    <p>The responses were collected from:</p>
+    <ul>
+        <li>ChatGPT</li>
+        <li>Gemini</li>
+        <li>Mistral AI</li>
+    </ul>
+
+    <p>Three prompting techniques were tested:</p>
+    <ol>
+        <li>Zero-shot prompting</li>
+        <li>Few-shot prompting</li>
+        <li>Chain-of-thought prompting</li>
+    </ol>
+
+    <p>The purpose of comparing prompting techniques was to observe how prompts influence:</p>
+    <ul>
+        <li>Response length</li>
+        <li>Structure</li>
+        <li>Analytical depth</li>
+        <li>Creativity</li>
+        <li>Reasoning transparency</li>
+    </ul>
+
+    <p>The collected responses were then analyzed comparatively.</p>
+
+    <h1>Chat GPT</h1>
+    <p>Medusa is one of the most striking works of the Baroque period, painted by Caravaggio around 1597. It represents the mythological Gorgon Medusa at the exact moment she has been beheaded by Perseus.</p>
+    <p>What makes the painting powerful is that Caravaggio captures the instant between life and death:</p>
+    <ul>
+        <li>Medusa’s eyes are wide with shock and terror.</li>
+        <li>Blood spurts from her neck.</li>
+        <li>Her mouth is open in a scream.</li>
+        <li>The snakes in her hair writhe violently.</li>
+    </ul>
+    <p>Rather than showing a static mythological symbol, Caravaggio turns Medusa into a psychologically intense, almost living figure.</p>
+    
+    <h2>Key meanings and interpretations</h2>
+    <p>1. The power of fear and horror</p>
+    <p>The painting was designed to shock viewers. Caravaggio uses dramatic realism to confront the viewer directly with terror, mortality, and violence — central themes in Baroque art.</p>
+    <p>2. Triumph over chaos</p>
+    <p>In Greek mythology, Medusa could turn people to stone with her gaze. Perseus defeats her using a mirrored shield to avoid looking directly at her. The severed head symbolizes the victory of intelligence and courage over monstrous chaos.</p>
+    <p>3. A protective symbol</p>
+    <p>The work was painted on a convex ceremonial shield, not a flat canvas. This references ancient shields that displayed frightening faces to ward off enemies. Medusa’s image historically functioned as an apotropaic symbol — something meant to repel evil.</p>
+    <p>4. Caravaggio’s fascination with realism</p>
+    <p>Unlike idealized Renaissance depictions, Caravaggio paints Medusa with human emotion and physical immediacy. Some historians even believe he used his own face as the model, giving the work an unsettling self-portrait quality.</p>
+    
+    <h2>Why it feels so modern</h2>
+    <p>The painting’s dramatic lighting, frozen motion, and emotional intensity make it feel almost cinematic. Instead of portraying mythology as distant and noble, Caravaggio makes it visceral and immediate.</p>
+    <p>Today, the painting is housed in the Uffizi Gallery in Florence.</p>
+     
+    <h1>Gemini</h1>
+    <p>Caravaggio’s Medusa (rendered around 1597) is one of the most arresting masterpieces of the Baroque era. Rather than a static portrait, it represents a highly specific, fleeting psychological micro-moment: the exact split-second of Medusa's execution and her sudden realization of her own death.</p>
+    <p>Caravaggio's Medusa (c. 1597), Uffizi Gallery. Источник: Wikipedia</p> 
+    
+    <p>To understand what the painting represents, it helps to look at how Caravaggio played with myth, canvas, and political power:</p>
+    
+    <p>1. The Shock of Self-Recognition</p>
+    <p>According to Greek mythology, the hero Perseus defeated Medusa by using a reflective shield given to him by the goddess Athena, allowing him to decapitate her without looking directly at her petrifying gaze.</p>
+    <p>Caravaggio catches Medusa at the ultimate paradox. Her eyes are wide with shock, her mouth is agape in a silent gasp, and blood pours from her severed neck. Look closely at her expression: she isn't looking at Perseus. Because the painting is executed on a convex wooden shield, she is looking directly at the viewer—or rather, she is looking at her own reflection in the shield that killed her. She realizes she has been tricked into paralyzing herself.</p>
+    
+    <p>2. A Defiance of Perspective</p>
+    <p>Caravaggio painted this on a rotella, a circular, convex tournament shield made of poplar wood. This choice of canvas was deliberate. Painting on a curved, convex surface usually distorts a face, stretching it outwards.</p>
+    <p>Caravaggio masterfully used foreshortening and shadows to counteract the curve. The result is an optical illusion: the head of Medusa actually appears to project forward into the room, while the flat background seems to recede, making the severed head look disturbingly three-dimensional and alive.</p>
+    
+    <p>3. Political Power and Wit</p>
+    <p>Beyond the myth, the painting carried massive political weight. It was commissioned by Cardinal Francesco Maria del Monte as a gift for the Grand Duke of Tuscany, Ferdinando I de' Medici.</p>
+    <p>In the Renaissance and Baroque eras, the image of Medusa's head on a shield was a well-known symbol for the triumph of reason over chaos, and wisdom over brutality. By presenting this to the Medici family, it poetically represented:</p>
+    <ul>
+        <li>The Grand Duke’s military power and ability to defeat his enemies.</li>
+        <li>The wisdom of the ruler (associating him with Athena/Perseus).</li>
+        <li>A protective talisman to ward off evil (an apotropaic symbol).</li>
+    </ul>
+    <p>A classic Caravaggio twist: Rumor has it that Caravaggio didn't use a female model for Medusa's face. Instead, he used his own features, making the painting a distorted, terrified self-portrait.</p>
+
+    <h1>Mistral AI</h1>
+    <p>Caravaggio’s ‘Medusa’ (c. 1597) is a striking oil painting on canvas mounted on a wooden shield, depicting the severed head of the Gorgon Medusa from Greek mythology. The work is renowned for its dramatic use of light and shadow (chiaroscuro) and its intense realism.</p>
+    
+    <h2>Symbolism and Representation</h2>
+    <ul>
+        <li>Mythological Origin: Medusa was a monster with snakes for hair, whose gaze could turn onlookers to stone. In the myth, the hero Perseus beheaded her while looking at her reflection in a shield to avoid her petrifying gaze.</li>
+        <li>Caravaggio’s Interpretation: Caravaggio’s version is unique because it shows Medusa at the moment of her death, her expression a mix of horror, pain, and surprise. The snakes on her head writhe in agony, and her mouth is open in a silent scream.</li>
+        <li>Self-Portrait Theory: Some art historians suggest that Caravaggio used his own features as a model for Medusa’s face, adding a layer of psychological depth and self-reflection to the work.</li>
+        <li>Symbol of Terror and Mortality: The painting serves as a reminder of the consequences of hubris and the inevitability of death, themes that were common in Baroque art.</li>
+    </ul>
+    
+    <h2>Context and Purpose</h2>
+    <ul>
+        <li>Shield Format: The painting was likely commissioned as a decorative shield, possibly for a parade or as a gift. The convex shape of the canvas enhances the illusion of a three-dimensional object.</li>
+        <li>Baroque Style: Caravaggio’s use of dramatic lighting and emotional intensity exemplifies the Baroque movement, which sought to evoke strong emotional responses from viewers.</li>
+    </ul>
+
+    <p>_______________________________________________________________________________________</p>
+
+  <h1 style="margin-top: 30px;">LLM Prompting Analysis</h1>
+
+    <h2>Zero-Shot Prompting</h2>
+    <p>Definition:</p>
+    <p>Zero-shot prompting means asking a model to complete a task without providing examples. The model relies entirely on its pretrained knowledge and reasoning abilities.</p>
+    <p>Prompt: “What does Caravaggio’s painting ‘Medusa’ represent?”</p>
+
+  <h2>ChatGPT Analysis</h2>
+
+  <p>
+    ChatGPT produced the most detailed and interpretative answer among all three models.
+  </p>
+
+  <p>The model focused heavily on:</p>
+
+  <ul>
+    <li>Fear and horror</li>
+    <li>Mortality</li>
+    <li>Psychological realism</li>
+    <li>Symbolism</li>
+    <li>Baroque artistic style</li>
+    <li>Mythological context</li>
+  </ul>
+
+  <p>
+    ChatGPT explained that Caravaggio captures the exact moment between life and death.
+    The response emphasized Medusa’s emotional expression, including terror, pain, and shock.
+    The model also discussed the shield format of the painting and interpreted it as an apotropaic object intended to repel evil.
+  </p>
+
+  <p>
+    One of the strongest aspects of the response was the psychological interpretation.
+    Rather than describing Medusa as simply a mythological monster, ChatGPT treated the painting as a deeply human and emotional image.
+  </p>
+
+  <h3>Strengths</h3>
+
+  <ul>
+    <li>Deep symbolic interpretation</li>
+    <li>Rich historical context</li>
+    <li>Strong emotional analysis</li>
+    <li>Excellent organization and readability</li>
+  </ul>
+
+  <h3>Weaknesses</h3>
+
+  <ul>
+    <li>The answer was longer than the other responses</li>
+    <li>Some symbolic interpretations were subjective</li>
+  </ul>
+
+  <h2>Gemini Analysis</h2>
+
+  <p>
+    Gemini generated a highly structured and educational response.
+  </p>
+
+  <p>The model focused on:</p>
+
+  <ul>
+    <li>Psychological shock</li>
+    <li>Self-recognition</li>
+    <li>Optical illusion</li>
+    <li>Political symbolism</li>
+    <li>Perspective and artistic technique</li>
+  </ul>
+
+  <p>
+    Gemini uniquely explained that Medusa appears to be looking at her own reflection in the shield that caused her death.
+    This interpretation introduced the idea of self-recognition and paradox, which made the response intellectually sophisticated.
+  </p>
+
+  <p>
+    Another important contribution from Gemini was the discussion of perspective and foreshortening.
+    The model analyzed how Caravaggio used the convex shield surface to create a three-dimensional illusion.
+  </p>
+
+  <h3>Strengths</h3>
+
+  <ul>
+    <li>Excellent clarity and structure</li>
+    <li>Strong educational style</li>
+    <li>Balanced historical and technical discussion</li>
+    <li>Sophisticated analysis of artistic technique</li>
+  </ul>
+
+  <h3>Weaknesses</h3>
+
+  <ul>
+    <li>Slightly less emotional than ChatGPT</li>
+    <li>Focused more on technique than psychological depth</li>
+  </ul>
+
+  <h2>Mistral AI Analysis</h2>
+
+  <p>
+    Mistral AI generated the shortest and most direct response.
+  </p>
+
+  <p>The model focused primarily on:</p>
+
+  <ul>
+    <li>Mythological background</li>
+    <li>Fear and death</li>
+    <li>Realism</li>
+    <li>Baroque style</li>
+  </ul>
+
+  <p>
+    The response explained the story of Medusa and briefly described Caravaggio’s dramatic use of light and shadow.
+    It also mentioned the theory that Caravaggio may have used his own face as the model for Medusa.
+  </p>
+
+  <h3>Strengths</h3>
+
+  <ul>
+    <li>Clear and concise explanation</li>
+    <li>Easy to understand</li>
+    <li>Efficient summary of key ideas</li>
+  </ul>
+
+  <h3>Weaknesses</h3>
+
+  <ul>
+    <li>Limited symbolic depth</li>
+    <li>Minimal emotional analysis</li>
+    <li>Less historical and contextual discussion</li>
+  </ul>
+
+  <h2>Comparative Analysis of Zero-Shot Results</h2>
+
+  <p>
+    The zero-shot experiment clearly demonstrated major stylistic differences between the models.
+  </p>
+
+  <ul>
+    <li>ChatGPT produced the richest symbolic and emotional interpretation.</li>
+    <li>Gemini balanced historical context, artistic technique, and readability.</li>
+    <li>Mistral AI prioritized concise summarization.</li>
+  </ul>
+
+  <p>From a humanities perspective:</p>
+
+  <ul>
+    <li>ChatGPT showed the strongest interpretative reasoning.</li>
+    <li>Gemini showed the best educational structure.</li>
+    <li>Mistral AI showed efficient but limited analysis.</li>
+  </ul>
+
+  <h2>Few-Shot Prompting</h2>
+
+  <h3>Definition</h3>
+  <p>
+    Few-shot prompting provides examples before the final task.
+    The examples guide the model toward a desired structure or reasoning style.
+  </p>
+
+  <h3>Example Prompt</h3>
+  <p>
+    Painting: The Last Supper → betrayal and sacrifice<br>
+    Painting: The Scream → anxiety and existential fear<br>
+    Painting: Medusa → ?
+  </p>
+
+  <h2>ChatGPT Few-Shot Analysis</h2>
+
+  <p>
+    ChatGPT responded using rich symbolic vocabulary even within the shorter format.
+    The model described Medusa as representing fear, violence, mortality, and mythological terror.
+  </p>
+
+  <p>
+    Compared to the zero-shot response, the answer became shorter but still retained thematic complexity.
+    This demonstrates that ChatGPT adapts effectively to prompt constraints while preserving interpretative richness.
+  </p>
+
+  <h2>Gemini Few-Shot Analysis</h2>
+
+  <p>
+    Gemini followed the structure of the examples very precisely.
+    The response focused on emotional intensity and transformation.
+  </p>
+
+  <p>
+    The model prioritized clarity and concise formatting.
+    However, compared to the zero-shot setting, some contextual richness disappeared because the prompt encouraged shorter answers.
+  </p>
+
+  <h2>Mistral AI Few-Shot Analysis</h2>
+
+  <p>
+    Mistral AI generated a very concise response focused on fear and dramatic emotion.
+  </p>
+
+  <p>
+    The model strongly followed the structure of the examples, demonstrating good prompt adaptability.
+    However, the answer remained minimal and did not expand beyond the required format.
+  </p>
+
+  <h2>Comparative Analysis of Few-Shot Results</h2>
+
+  <ul>
+    <li>Responses became shorter and more uniform.</li>
+    <li>The structure became more standardized.</li>
+    <li>Differences between the models became smaller.</li>
+  </ul>
+
+  <p>
+    ChatGPT still maintained the richest symbolic language.
+    Gemini produced the clearest educational response.
+    Mistral AI remained the most concise.
+  </p>
+
+  <h2>Chain-of-Thought Prompting</h2>
+
+  <h3>Definition</h3>
+  <p>
+    Chain-of-thought prompting encourages models to explain their reasoning step by step.
+    This technique is often used to improve transparency and logical structure.
+  </p>
+
+  <h3>Prompt</h3>
+
+  <p>
+    “What does Caravaggio’s painting ‘Medusa’ represent? Let’s think step by step.”
+  </p>
+
+  <h2>Conclusion</h2>
+
+  <p>
+    This project compared how ChatGPT, Gemini, and Mistral AI interpret the question:
+    “What does Caravaggio’s painting ‘Medusa’ represent?”
+  </p>
+
+  <ul>
+    <li>ChatGPT is best for deep symbolic and psychological analysis.</li>
+    <li>Gemini provides the best balance between clarity and academic explanation.</li>
+    <li>Mistral AI is useful for concise summaries but offers less detailed interpretation.</li>
+  </ul>
+
+  <p>
+    The project also demonstrates the importance of prompt engineering in humanities-related AI research.
+    The choice of prompting strategy significantly changes the structure, reasoning process, and analytical depth of model responses.
+  </p>
+
   </main>
 
   <footer>
@@ -33,3 +397,4 @@
   </footer>
 
 </body>
+</html>
