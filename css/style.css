@@ -71,9 +71,9 @@ main {
 
 .project-card {
   background: #fff;
-  border: 1px solid #e0e0e0;
-  border-left: 4px solid #1a1a2e;
-  padding: 1.2rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  border-left: 4px solid #50203a;
+  padding: 1.2rem 1.2rem;
   margin-bottom: 1.5rem;
   border-radius: 0 4px 4px 0;
 }
