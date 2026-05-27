@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Identifying gaps</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.5;
+        color: #333;
+      }
+      p {
+        margin: 0 0 18px 0;
+      }
+  </style>
 </head>
 <body>
 
@@ -22,10 +32,129 @@
   </header>
 
   <main>
-    <h1></h1>
-    <h2></h2>
-      <p>
-      </p>
+    
+  <h1>IDENTIFYING GAPS + RDF TRIPLES</h1>
+
+  <h2>FIRST GAP</h2>
+
+  <p>During the analysis of the page, we noticed an important missing piece of contextual information.
+    The resource only describes the famous version of the painting preserved at the Uffizi Gallery, but it does not mention that Caravaggio actually created two versions of Medusa.
+  </p>
+
+  <p>The first version is known as Medusa di Murtola, while the second and more famous version is the one at the Uffizi. It was named after the poet Gaspare Murtola, who wrote of Medusa: “flee, for if your eyes are petrified in amazement, she will turn you to stone”. It measures 48 × 55 cm and is signed Michel A
+    F (Michel Angelo Fecit, meaning “Michel Angelo made this”). This work is privately owned.
+  </p>
+
+  <p>The second version of the painting is known as Medusa (Testa di Medusa). It is slightly larger, measuring 60
+    × 55 cm. Although the work is not signed or dated, it is commonly dated to 1597 and is preserved at the Uffizi Gallery.
+  </p>
+
+  <p>This absence represents an information gap because the resource lacks historical and contextual completeness. Users consulting the page may incorrectly assume that only one version of the artwork exists.
+    To verify this gap, we used SPARQL queries on the ArCo dataset.
+  </p>
+
+  <p>The first query checks whether the resource is linked to other related versions or artworks.
+  </p>
+  
+  <img src="images/1.jpg" style="width: 650px;">
+
+  <p>This query searches for relationships connecting the artwork to other related cultural properties. The result is empty, confirming that the ArCo resource does not explicitly reference another version of Medusa.
+  </p>
+
+  <p>In this second query we will investigate whether there are references to the Murtola version specifically.
+  </p>
+
+  <img src="images/2.jpg" style="width: 500px;">
+
+  <p>The query produces no results.
+  </p>
+
+  <p>This means that the Medusa di Murtola is absent from the dataset, at least under this naming convention.
+  </p>
+
+  <p>To address this limitation, the dataset can be enriched by linking the ArCo resource to an external authoritative source describing the missing artwork.
+  </p>
+
+  <p>The missing artwork (Medusa di Murtola) is documented in external knowledge bases such as Wikipedia:
+    <a href="https://en.wikipedia.org/wiki/Medusa_(Caravaggio)">https://en.wikipedia.org/wiki/Medusa_(Caravaggio)</a>
+
+  </p>
+
+  <p>We will be connecting the two resources.
+    This is achieved using RDF triples expressed in Turtle syntax, which is the standard format for writing RDF data in a human-readable way.
+  </p>
+
+  <img src="images/3.jpg" style="width: 650px;">
+
+  <p>In this RDF representation, the subject is the Caravaggio’s Medusa preserved at the Uffizi Gallery. The object corresponds to the Wikipedia site in which the Medusa di Murtola, an earlier version of the same iconographic subject, is mentioned.
+  </p>
+
+  <p>The property owl:sameAs is used to express a strong alignment between two entities described in different datasets. Although in strict semantic terms it indicates identity, in this context it is used as a cross-dataset linking mechanism to suggest a high degree of correspondence between related cultural heritage records.
+  </p>
+
+  <p>In addition, dcterms:relation is used to express a broader and less strict historical and conceptual relationship. This allows the model to capture not only identity-level alignment but also contextual and art- historical association between the two works.
+  </p>
+
+  <h2>SECOND GAP + RDF TRIPLE</h2>
+
+  <p>This time, we will be examining two cultural heritage resources that are currently not connected, despite having a clear historical and iconographic relationship.
+    The two resources are the Testa di Medusa by Caravaggio
+    <p><a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900289175.html">https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900289175.html
+    </a></p>
+    <p>…and a printed reproduction in Imperiale et Royale Galerie de Florence</p>
+    <p><a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900477336.html">https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900477336.html
+    </a></p>
+  </p>
+
+  <p>The second resource is a printed illustration contained in the publication Imperiale et Royale Galerie de Florence, a historical volume dedicated to reproducing artworks from Florentine collections.
+    Although the print clearly reproduces or depicts the painting, the two resources are currently disconnected inside the ArCo graph. This means that users cannot navigate from the original artwork to its printed reproductions, and SPARQL queries will not retrieve documentary representations of the artwork;
+  </p>
+
+  <p>To express this relationship, we could use the property:
+  </p>
+
+  <p>crm:P62_depicts</p>
+
+  <p>This property indicates that one resource visually depicts another entity. The print resource should therefore depict the original painting.
+  </p>
+
+  <img src="images/4.jpg" style="width: 650px;">
+
+  <p>In this triple the subject is the printed illustration from Imperiale et Royale Galerie de Florence; the predicate crm:P62_depicts expresses a relationship; the object is Caravaggio’s Testa di Medusa, so the triple formally states that the print depicts the original artwork.
+  </p>
+
+  <h2>THIRD GAP</h2>
+
+  <p>During the analysis of the page, we noticed that the resource is not semantically connected to other artworks by Caravaggio that share similar themes, iconography, and artistic characteristics.
+  </p>
+
+  <p>Medusa is strongly related to other paintings by Caravaggio that represent violence, decapitation, dramatic realism, and psychological tension, such as Judith Beheading Holofernes and David with the Head of Goliath
+    These artworks belong to the same artistic and thematic universe and are often studied together in art history because they explore similar subjects related to death, fear, heroism, and human emotion.
+    Users consulting the resource may understand the artwork in isolation, without recognizing its relationship to other important works by the same artist.
+  </p>
+
+  <p>To verify this gap, we used SPARQL queries on the ArCo dataset.
+  </p>
+
+  <p>We already know that the Medusa resource is not linked to other related artworks through semantic relationships thanks to our previous SPARQL query. The ArCo resource does not explicitly reference any thematically related works by Caravaggio.
+    A possible solution to this information gap would be the addition of RDF triples that semantically connect Medusa with other thematically related artworks.
+  </p>
+
+  <p>For example, the property core:isRelatedTo could be used to establish relationships between the paintings:
+  </p>
+
+  <img src="images/5.jpg" style="width: 650px;">
+
+  <p>Another relationship could connect the artwork to Judith Beheading Holofernes:
+  </p>
+
+  <img src="images/6.jpg" style="width: 650px;">
+
+  <p>Additional RDF triples could also enrich the thematic interpretation of the artwork:
+  </p>
+
+  <img src="images/7.jpg" style="width: 650px;">
+
   </main>
 
   <footer>
@@ -33,3 +162,4 @@
   </footer>
 
 </body>
+</html>
