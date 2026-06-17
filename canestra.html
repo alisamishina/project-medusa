@@ -53,12 +53,12 @@ PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
 
 SELECT DISTINCT ?painting ?label
 WHERE {
-?painting a arco:HistoricOrArtisticProperty ;
-rdfs:label ?label .
+  ?painting a arco:HistoricOrArtisticProperty ;
+            rdfs:label ?label .
 
-FILTER(REGEX(?label, "Canestra di frutta", "i"))
+  FILTER(STRSTARTS(LCASE(STR(?label)), "canestra di frutta"))
 }
-LIMIT 100
+
       </div>
     </article>
 
