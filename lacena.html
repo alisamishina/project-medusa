@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Cena in Emmaus</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+ <header>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="methodology.html">Methodology</a></li>
+        <li><a href="sparqlqueries.html">SPARQL queries</a></li> 
+        <li><a href="gaps.html">Identifying Gaps and Creating Triples</a></li>
+        <li><a href="llmpromts.html">LLM prompts</a></li>
+        <li><a href="conclusion.html">Conclusion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Creating SPARQL querys</h1>
+    <h2>Query 1</h2>
+    <p style="margin-bottom: 30px; margin-top: 20px;">
+      First, we used the following query to find “Testa di Medusa” by Caravaggio in the ArCo database, 
+      after choosing the subject for our topic:
+    </p>
+
+      <article class="project-card">      
+      <div class="text-block">
+PREFIX rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+PREFIX arco: "https://w3id.org/arco/ontology/arco/"
+
+SELECT DISTINCT ?painting ?label
+WHERE {
+  ?painting a arco:HistoricOrArtisticProperty ;
+         rdfs:label ?label .
+  FILTER(REGEX(?label, "Testa di Medusa", "i"))
+}
+
+LIMIT 100
+      </div>
+    </article>
+    <h3 style="margin-bottom: 20px; margin-top: 20px">Result</h3>
+
+    <figure>
+    <img src="images/query1.jpg" alt="Query1" style="width: 750px;">
+    </figure>
+
+    <p>
+        <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fpainting+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3Fpainting+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0A+++++++++rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Testa+di+Medusa%22%2C+%22i%22%29%29%0D%0A%7D%0D%0A%0D%0ALIMIT+100&format=text%2Fhtml&timeout=0&signal_void=on">Link with results</a>
+    </p>
+
+    <p style="margin-bottom: 30px; margin-top: 20px;">
+    This gave us a large number of irrelevant results, so we created a new query to narrow them down and find the chosen painting.
+    </p>
+
+    <h2>Query 2</h2>
+
+    <p style="margin-bottom: 30px; margin-top: 20px;">
+      In the second query we used the name of the author and commands such as UNION, OPTIONAL, DISTINCT, FILTER REGEX,ORDER BY, LIMIT. 
+    </p>
+
+      <article class="project-card">      
+      <div class="text-block">
+PREFIX rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+PREFIX arco: "https://w3id.org/arco/ontology/arco/"
+PREFIX a-cd: "https://w3id.org/arco/ontology/catalogue/"
+
+SELECT DISTINCT ?painting ?label
+WHERE {
+  {
+    ?painting a arco:HistoricOrArtisticProperty ;
+           rdfs:label ?label .
+    FILTER(REGEX(?label, "testa di medusa", "i"))
+    FILTER(REGEX(?label, "caravaggio", "i"))
+  }
+
+  UNION
+
+  {
+    ?painting a arco:HistoricOrArtisticProperty ;
+              rdfs:label ?label .
+    FILTER(REGEX(?label, "testa di medusa", "i"))
+    
+    ?painting a-cd:hasAuthor ?authorEntity .
+    ?authorEntity rdfs:label ?authorLabel .
+    
+    FILTER(REGEX(?authorLabel, "Caravaggio", "i"))
+  }
+
+    OPTIONAL { ?painting a-cd:depiction ?depiction }
+}
+
+ORDER BY ASC(?label)
+LIMIT 10
+      </div>
+    </article>
+    <h3 style="margin-bottom: 20px; margin-top: 20px">Result</h3>
+
+    <figure>
+    <img src="images/query2.jpg" alt="Query2" style="width: 750px;">
+    </figure>
+
+     <p>
+        <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcatalogue%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fpainting+%3Flabel%0D%0AWHERE+%7B%0D%0A++%7B%0D%0A++++%3Fpainting+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0A+++++++++++rdfs%3Alabel+%3Flabel+.%0D%0A++++FILTER%28REGEX%28%3Flabel%2C+%22testa+di+medusa%22%2C+%22i%22%29%29%0D%0A++++FILTER%28REGEX%28%3Flabel%2C+%22caravaggio%22%2C+%22i%22%29%29%0D%0A++%7D%0D%0A%0D%0A++UNION%0D%0A%0D%0A++%7B%0D%0A++++%3Fpainting+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0A++++++++++++++rdfs%3Alabel+%3Flabel+.%0D%0A++++FILTER%28REGEX%28%3Flabel%2C+%22testa+di+medusa%22%2C+%22i%22%29%29%0D%0A++++%0D%0A++++%3Fpainting+a-cd%3AhasAuthor+%3FauthorEntity+.%0D%0A++++%3FauthorEntity+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++++%0D%0A++++FILTER%28REGEX%28%3FauthorLabel%2C+%22Caravaggio%22%2C+%22i%22%29%29%0D%0A++%7D%0D%0A%0D%0A++++OPTIONAL+%7B+%3Fpainting+a-cd%3Adepiction+%3Fdepiction+%7D%0D%0A%7D%0D%0A%0D%0AORDER+BY+ASC%28%3Flabel%29%0D%0ALIMIT+10&format=text%2Fhtml&timeout=0&signal_void=on
+">Link with results</a>
+     </p>
+
+    <p style="margin-bottom: 30px; margin-top: 20px;">
+      By altering the query we got 8 links as a result. From the list it was easy to find our painting. We chose the following link: 
+    </p>
+        <a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900289175.html
+">Link</a>
+     </p>
+
+    <figure>
+    <img src="images/page.jpg" alt="Page" style="width: 700px;">
+    </figure>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Project</p>
+  </footer>
+
+</body>
+</html>
