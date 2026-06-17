@@ -1,40 +1,199 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Davide con testa di Golia</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>David with the Head of Goliath</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
- <header>
-    <nav aria-label="Main navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="methodology.html">Methodology</a></li>
-        <li><a href="sparqlqueries.html">SPARQL queries</a></li> 
-        <li><a href="gaps.html">Identifying Gaps and Creating Triples</a></li>
-        <li><a href="llmpromts.html">LLM prompts</a></li>
-        <li><a href="conclusion.html">Conclusion</a></li>
-      </ul>
-    </nav>
-  </header>
+  <body>
+    <header>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="methodology.html">Methodology</a></li>
+          <li><a href="sparqlqueries.html">SPARQL queries</a></li>
+          <li><a href="gaps.html">Identifying Gaps</a></li>
+          <li><a href="llmpromts.html">LLM prompts</a></li>
+          <li><a href="canestra.html">Canestra di Frutta</a></li>
+          <li><a href="kirill.html"> Davide con testa di Golia</a></li>
+          <li><a href="botticelli.html">Botticelli cultural heritage</a></li>
+          <li><a href="lacena.html">La cena in Emmaus</a></li>
+          <li><a href="conclusion.html">Conclusion</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <main>
-    <h1>Davide con testa di Golia</h1>
-     <p>
-        <div class="text-block">
+    <main>
+      <h1 style="text-align: center;">David with the Head of Goliath</h1>
 
-        </div>
+      <img
+        src="images/david.jpg"
+        alt="David with the Head of Goliath"
+        style="display: block; width: 320px; max-width: 100%; height: auto; margin: 25px auto 35px auto; border: 1px solid #1a1a2e;"
+      <br />
+
+      <p>
+        I chose the painting called David with the Head of Goliath. First, I try
+        to find it in the ARCO ontology using only the name:
       </p>
 
-  </main>
+      <br />
 
-  <footer>
-    <p>&copy; 2026 Project</p>
-  </footer>
+      <article class="project-card">
+        <pre><code>PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
 
-</body>
+
+PREFIX arco: https://w3id.org/arco/ontology/arco/
+
+SELECT DISTINCT ?painting ?label
+WHERE {
+?painting a arco:HistoricOrArtisticProperty ;
+rdfs:label ?label .
+FILTER(REGEX(?label, "david", "i"))
+FILTER(REGEX(?label, "goliath", "i"))
+}
+
+LIMIT 100</code></pre>
+      </article>
+
+      <br />
+
+      <p>
+        If we write only the name of the painting, there are still many results,
+        because several artworks contain the names "David" or "Goliath". So I
+        narrow it down by adding the author, Caravaggio, and the language of the
+        label - English:
+      </p>
+
+      <br />
+
+      <article class="project-card">
+        <pre><code>PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+
+PREFIX a-cd: https://w3id.org/arco/ontology/context-description/
+
+SELECT DISTINCT ?painting ?label ?authorName
+WHERE {
+?painting rdfs:label ?label ;
+a-cd:hasAuthor ?author .
+?author rdfs:label ?authorName .
+
+FILTER(regex(?label, "david", "i"))
+FILTER(regex(?label, "goliath", "i"))
+FILTER(regex(?authorName, "caravaggio", "i"))
+FILTER(lang(?label) = "en")
+}
+
+LIMIT 10</code></pre>
+      </article>
+
+      <br />
+
+      <p>
+        The result of the query is very good: it returns only a few links, all
+        referring to the correct artwork. Some entries list the author simply as
+        "Caravaggio", while others use the full name "Merisi Michelangelo detto
+        Caravaggio". This confirms that we have identified the correct resource
+        in the Knowledge Graph.
+      </p>
+
+      <br />
+
+      <p>
+        Next, I check whether the painting already has subject information in
+        ArCo. To do this, I query the ontology for the property a-cd:hasSubject:
+      </p>
+
+      <br />
+
+      <article class="project-card">
+        <pre><code>PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+
+PREFIX a-cd: https://w3id.org/arco/ontology/context-description/
+
+SELECT DISTINCT ?subject ?subjectLabel
+WHERE {
+?painting rdfs:label ?label .
+FILTER(regex(?label, "david", "i"))
+FILTER(regex(?label, "goliath", "i"))
+
+OPTIONAL {
+?painting a-cd:hasSubject ?subject .
+?subject rdfs:label ?subjectLabel .
+}
+}
+
+LIMIT 20</code></pre>
+      </article>
+
+      <br />
+
+      <p>
+        The result shows that no subjects are associated with the painting. This
+        confirms the GAP: the artwork lacks semantic subject information such as
+        "David", "Goliath", or "Decapitation".
+      </p>
+
+      <br />
+
+      <p>
+        To enrich the Knowledge Graph, I use an LLM to extract the main subjects
+        of the painting. The model identifies:
+      </p>
+
+      <br />
+
+      <ul style="list-style-position: inside; padding-left: 0; margin-left: 0; line-height: 1.7;">
+        <li>David</li>
+        <li>Goliath</li>
+        <li>The severed head</li>
+        <li>The act of decapitation</li>
+        <li>A symbolic interpretation: Caravaggio's self-portrait as Goliath</li>
+      </ul>
+      </ul>
+
+      <br />
+
+      <p>
+        Finally, I ask the LLM to convert this information into RDF triples
+        using the ArCo ontology:
+      </p>
+
+      <br />
+
+      <article class="project-card">
+        <pre><code>@prefix ex: &lt;http://example.org/&gt; .
+
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+@prefix a-cd: <https://w3id.org/arco/ontology/context-description/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:David_Goliath a arco:CulturalProperty ;
+a-cd:hasSubject ex:David ;
+a-cd:hasSubject ex:Goliath ;
+a-cd:hasSubject ex:Decapitation ;
+a-cd:hasInterpretation ex:Autoportrait ;
+a-cd:iconclassCode "71D123" .
+
+ex:David a a-cd:Subject ; rdfs:label "David" .
+ex:Goliath a a-cd:Subject ; rdfs:label "Goliath" .
+ex:Decapitation a a-cd:Subject ; rdfs:label "Decapitation of Goliath" .
+ex:Autoportrait a a-cd:Interpretation ; rdfs:label "Caravaggio's self-portrait as Goliath" .</code></pre>
+      </article>
+
+      <br />
+
+      <p>
+        These triples enrich the painting with missing semantic information,
+        making it more complete and more useful for cultural heritage analysis.
+      </p>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Project</p>
+    </footer>
+  </body>
 </html>
-
