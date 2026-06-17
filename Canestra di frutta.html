@@ -43,6 +43,28 @@ FILTER(REGEX(?label, "Canestra di frutta", "i"))
 LIMIT 100
       </div>
     </article>
+<div class="text-block">
+          I got a lot of results containing the phrase Canestra di frutta. It turned out that Caravaggio has other paintings featuring fruits as well. So I decided to create another query to keep only the specific painting I needed.
+        </div>
+    <article class="project-card">      
+      <div class="text-block">
+PREFIX arco: https://w3id.org/arco/ontology/arco/
+PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+
+SELECT DISTINCT ?painting ?label
+WHERE {
+?painting a arco:HistoricOrArtisticProperty ;
+rdfs:label ?label .
+
+FILTER(REGEX(?label, "Canestra di frutta", "i"))
+}
+LIMIT 100
+      </div>
+    </article>
+
+
+
+    
     
       </p>
   </main>
