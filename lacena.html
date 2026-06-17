@@ -24,11 +24,12 @@
   <main>
     <h1>La Cena in Emmaus</h1>
       <p>
-        <div class="text-block">
+        <img src="images/lacena.jpg" alt="La cena in Emmaus" style="width: 500px;">
+      </p> 
+    
+      <div class="text-block">
 I chose the painting called Supper in Emmaus. First, I try to find the painting using only the name:
-        </div>
-
-      <img src="images/lacena.jpg" alt="La cena in Emmaus" style="width: 500px;">
+      </div>
 
     <article class="project-card">      
       <div class="text-block">
@@ -44,13 +45,27 @@ WHERE {
 LIMIT 100
       </div>
     </article>
-    </p>
-    <p>
+    
       <div class="text-block">
 If we write only the name of the painting, there are too many results, because there are multiple different works with this name. 
 So I narrow it down by adding the author, Caravaggio, and language of the page - English
       </div>
-    </p>
+
+    <article class="project-card">      
+      <div class="text-block">
+PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+PREFIX arco: https://w3id.org/arco/ontology/arco/
+SELECT DISTINCT ?painting ?label
+WHERE {
+  ?painting a arco:HistoricOrArtisticProperty ;
+         rdfs:label ?label .
+  FILTER(REGEX(?label, "la cena in emmaus", "i"))
+}
+
+LIMIT 100
+      </div>
+    </article>
+    
   </main>
 
   <footer>
