@@ -28,6 +28,21 @@
           I’ve chosen the painting "Canestra di frutta" by Caravaggio and made a query to find it in the ArCo ontology.
         </div>
         <img src="images/Canestra .jpeg" alt="Canestra di frutta">
+     <article class="project-card">      
+      <div class="text-block">
+PREFIX arco: https://w3id.org/arco/ontology/arco/
+PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+
+SELECT DISTINCT ?painting ?label
+WHERE {
+?painting a arco:HistoricOrArtisticProperty ;
+rdfs:label ?label .
+
+FILTER(REGEX(?label, "Canestra di frutta", "i"))
+}
+LIMIT 100
+      </div>
+    </article>
     
       </p>
   </main>
