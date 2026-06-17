@@ -54,15 +54,19 @@ So I narrow it down by adding the author, Caravaggio, and language of the page -
     <article class="project-card">      
       <div class="text-block">
 PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
-PREFIX arco: https://w3id.org/arco/ontology/arco/
-SELECT DISTINCT ?painting ?label
+PREFIX a-cd: https://w3id.org/arco/ontology/context-description/
+SELECT DISTINCT ?painting ?label ?authorName
 WHERE {
-  ?painting a arco:HistoricOrArtisticProperty ;
-         rdfs:label ?label .
-  FILTER(REGEX(?label, "la cena in emmaus", "i"))
+  ?painting rdfs:label ?label ;
+            a-cd:hasAuthor ?author .
+  ?author rdfs:label ?authorName .
+
+  FILTER(regex(?label, "la cena in emmaus", "i"))
+  FILTER(regex(?authorName, "caravaggio", "i"))
+  FILTER(lang(?label) = "en")
 }
 
-LIMIT 100
+LIMIT 10
       </div>
     </article>
     
