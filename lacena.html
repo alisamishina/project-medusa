@@ -171,16 +171,40 @@ https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus
         https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398 .
           </div>
     <P>_________________________________________________________________________</P>
-    <div class="text-block">
-    <p>and a simpler one</p>
-    </div>
+      <div class="text-block">
+      <p>and a simpler one</p>
+      </div>
     <P>_________________________________________________________________________</P>
+      <div class="text-block">
+  https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
+      a-cd:hasTitle
+          https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus .
+      </div>
+    <P>_________________________________________________________________________</P>
+
+      <div class="text-block">
+Then I asked ChatGPT a little information about the painting. It told me that the version that I found was made in 1606 and that there is another version of the painting, which was made earlier:
+<a href="https://en.wikipedia.org/wiki/Supper_at_Emmaus_(Caravaggio,_London)">Supper at Emmaus (1601)</a>
+I asked to make a triple to connect these two versions:
+      </div>
+        <P>_________________________________________________________________________</P>
           <div class="text-block">
+@prefix a-cd: https://w3id.org/arco/ontology/context-description/ .
+
 https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
-    a-cd:hasTitle
-        https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus .
+    a-cd:hasRelatedWork
+    https://www.wikidata.org/entity/Q1153292 .
           </div>
-    <P>_________________________________________________________________________</P>
+        <P>_________________________________________________________________________</P>
+    
+    <h2>Conclusion</h2>
+      <div class="text-block">
+In conclusion, I manages to find the painting in ArCo ontology using queries. 
+After that thanks to my own examination of the page and help of LLM I found two information gaps.
+I made some prompts to LLM and it made triples to enrich the knowledge graph.
+      </div>
+    
+    
     
   </main>
 
