@@ -4,37 +4,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canestra di frutta</title>
+
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Центрирование всех изображений */
+    .img-center {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .img-small {
+      width: 500px;
+    }
+
+    .img-medium {
+      width: 600px;
+    }
+  </style>
 </head>
+
 <body>
 
- <header>
-    <nav aria-label="Main navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sparqlqueries.html">Medusa</a></li> 
-        <li><a href="gaps.html">Identifying Gaps</a></li>
-        <li><a href="llmpromts.html">LLM prompts</a></li>
-        <li><a href="canestra.html">Canestra di Frutta</a></li>
-        <li><a href="kirill.html">Davide con testa di Golia</a></li>
-        <li><a href="lacena.html">La cena in Emmaus</a></li>
-        <li><a href="conclusion.html">Conclusion</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sparqlqueries.html">Medusa</a></li> 
+      <li><a href="gaps.html">Identifying Gaps</a></li>
+      <li><a href="llmpromts.html">LLM prompts</a></li>
+      <li><a href="canestra.html">Canestra di Frutta</a></li>
+      <li><a href="kirill.html">Davide con testa di Golia</a></li>
+      <li><a href="lacena.html">La cena in Emmaus</a></li>
+      <li><a href="conclusion.html">Conclusion</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>
-    <h1>Canestra di frutta</h1>
-        <div class="text-block">
+<main>
+
+<h1>Canestra di frutta</h1>
+
+<div class="text-block">
   I’ve chosen the painting 
   <a href="https://it.wikipedia.org/wiki/Canestra_di_frutta" target="_blank">
     "Canestra di frutta"
   </a>
   by Caravaggio and made a query to find it in the ArCo ontology.
 </div>
-        <img src="images/Canestra .jpeg" alt="Canestra di frutta"style="width: 500px;">
-     <article class="project-card">      
-      <div class="text-block">
+
+<img src="images/Canestra.jpeg" alt="Canestra di frutta"
+     class="img-center img-small">
+
+<article class="project-card">
+  <div class="text-block">
 PREFIX arco: https://w3id.org/arco/ontology/arco/
 PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
 
@@ -46,21 +71,26 @@ rdfs:label ?label .
 FILTER(REGEX(?label, "Canestra di frutta", "i"))
 }
 LIMIT 100
-      </div>
-       </article>
-    <div class="text-block">
+  </div>
+</article>
+
+<div class="text-block">
   The result:
   <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fpainting+%3Flabel%0D%0AWHERE+%7B%0D%0A%3Fpainting+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0Ardfs%3Alabel+%3Flabel+.%0D%0A%0D%0AFILTER%28REGEX%28%3Flabel%2C+%22Canestra+di+frutta%22%2C+%22i%22%29%29%0D%0A%7D%0D%0ALIMIT+100%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on"
      target="_blank" rel="noopener noreferrer">
     View SPARQL query results
   </a>
 </div>
-       <img src="images/Query 1.jpeg" alt="Query 1"style="width: 600px;">
+
+<img src="images/Query1.jpeg" alt="Query 1"
+     class="img-center img-medium">
+
 <div class="text-block">
-          I got a lot of results containing the phrase "Canestra di frutta". It turned out that Caravaggio has other paintings featuring fruits as well ("Fanciullo con canestra di frutta"). So I decided to create another query to keep only the specific painting I needed.
-        </div>
-    <article class="project-card">      
-      <div class="text-block">
+  I got a lot of results containing the phrase "Canestra di frutta". It turned out that Caravaggio has other paintings featuring fruits as well ("Fanciullo con canestra di frutta"). So I decided to create another query to keep only the specific painting I needed.
+</div>
+
+<article class="project-card">
+  <div class="text-block">
 PREFIX arco: https://w3id.org/arco/ontology/arco/
 PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
 
@@ -71,62 +101,45 @@ WHERE {
 
   FILTER(STRSTARTS(LCASE(STR(?label)), "canestra di frutta"))
 }
-      </div>
-    </article>
-    <div class="text-block">
+  </div>
+</article>
+
+<div class="text-block">
   The result:
   <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fpainting+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3Fpainting+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0A++++++++++++rdfs%3Alabel+%3Flabel+.%0D%0A%0D%0A++FILTER%28STRSTARTS%28LCASE%28STR%28%3Flabel%29%29%2C+%22canestra+di+frutta%22%29%29%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on"
      target="_blank" rel="noopener noreferrer">
     Open the query result in the ArCo SPARQL endpoint
   </a>
 </div>
-       <img src="images/Query 2.jpeg" alt="Query 2"style="width: 600px;">
+
+<img src="images/Query2.jpeg" alt="Query 2"
+     class="img-center img-medium">
+
 <div class="text-block">
   The refined query successfully returned the exact artwork I was looking for. 
-  By replacing the regular expression filter with the <code>STRSTARTS</code> function, 
+  By replacing the regular expression filter with the STRSTARTS function, 
   I was able to narrow down the results and eliminate other artworks containing similar keywords in their titles. 
   The query identified the cultural heritage resource corresponding to Caravaggio’s <i>Canestra di frutta</i>, 
-  confirming that the artwork is represented in the ArCo knowledge graph. This result demonstrates how SPARQL queries can be progressively refined to improve precision and retrieve a specific cultural heritage object from a large and complex ontology.
-  <br><br>
-  <a href="https://dati.cultura.gov.it/lodview-arco/resource/Lombardia/HistoricOrArtisticProperty/L0030-00020_R03.html"
-     target="_blank" rel="noopener noreferrer">
-    View the artwork record in the ArCo Knowledge Graph
-  </a>
+  confirming that the artwork is represented in the ArCo knowledge graph.
 </div>
- <img src="images/Canestra.jpeg" alt="Canestra di frutta"style="width: 500px;">    
-    <hr style="margin: 50px 0;">
 
-<h1 style="text-align: center; margin-bottom: 30px;">
-  IDENTIFYING THE GAPS AND CREATING NEW TRIPLES
-</h1>
-    <h3>First gap (RDF modeling gap — Author / contextual attribution)</h3>
+<img src="images/Canestra.jpeg" alt="Canestra di frutta final"
+     class="img-center img-small">
+
+<hr style="margin: 50px 0;">
+
+<h1 style="text-align:center;">IDENTIFYING THE GAPS AND CREATING NEW TRIPLES</h1>
+
+<h3>First gap (RDF modeling gap — Author / contextual attribution)</h3>
 
 <div class="text-block">
-  During the analysis of the resource L0030-00020_R03, we identified a missing contextual modeling detail regarding the authorship of the cultural property. The author is often represented only as a simple text value, not as a structured semantic entity in the knowledge graph.
-
-  <br><br>
-
-  This leads to a loss of semantic meaning, because it becomes difficult to:
-  <ul>
-    <li>link the author to other artworks</li>
-    <li>run SPARQL queries across all works by the same author</li>
-    <li>connect the data with external sources such as Wikidata</li>
-  </ul>
+  During the analysis of the resource L0030-00020_R03, we identified a missing contextual modeling detail regarding authorship.
 </div>
 
 <h3>RDF enrichment using a Zero-shot LLM approach</h3>
 
 <div class="text-block">
-  To address this issue, I use ChatGPT (GPT-5.5) with a Zero-shot prompting approach to extract and structure the author information from the cultural heritage record.
-
-  The model receives no examples and directly performs the task.
-
-  The LLM identifies:
-  <ul>
-    <li>Michelangelo Merisi da Caravaggio (Wikidata: Q42207)</li>
-  </ul>
-
-  The author is then modeled as a structured semantic entity instead of a simple string.
+  The LLM identifies Michelangelo Merisi da Caravaggio (Q42207).
 </div>
 
 <article class="project-card">
@@ -146,13 +159,14 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 </article>
 
 <div class="text-block">
-  This enrichment improves the knowledge graph by enabling reuse of the author entity, supporting SPARQL queries across artworks, and allowing integration with external Linked Open Data sources such as Wikidata.
+  This enrichment improves the knowledge graph by enabling reuse of the author entity.
 </div>
-  </main>
 
-  <footer>
-    <p>&copy; 2026 Project</p>
-  </footer>
+</main>
+
+<footer>
+  <p>&copy; 2026 Project</p>
+</footer>
 
 </body>
 </html>
