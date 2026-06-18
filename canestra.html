@@ -76,8 +76,12 @@ WHERE {
       </div>
     </article>
     <div class="text-block">
-      The result:
-        </div>
+  The result:
+  <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fpainting+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3Fpainting+a+arco%3AHistoricOrArtisticProperty+%3B%0D%0A++++++++++++rdfs%3Alabel+%3Flabel+.%0D%0A%0D%0A++FILTER%28STRSTARTS%28LCASE%28STR%28%3Flabel%29%29%2C+%22canestra+di+frutta%22%29%29%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on"
+     target="_blank" rel="noopener noreferrer">
+    Open the query result in the ArCo SPARQL endpoint
+  </a>
+</div>
        <img src="images/Query 2.jpeg" alt="Query 2"style="width: 600px;">
 
 
