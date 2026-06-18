@@ -156,7 +156,7 @@ In order to create new triple I decided to use <a href="https://chatgpt.com/">Ch
         </p>
         <p>It gave me two versions of triples:</p>
           <div class="text-block">
-_________________________________________________________________________
+________________________________________________________________
 @prefix a-cd: https://w3id.org/arco/ontology/context-description/ .
 @prefix rdfs: http://www.w3.org/2000/01/rdf-schema# .
 
@@ -169,31 +169,30 @@ https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus
     rdfs:label "Supper at Emmaus"@en ;
     a-cd:isTitleOf
         https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398 .
-_________________________________________________________________________
+________________________________________________________________
           </div>
       <div class="text-block">
       and a simpler one
       </div>
       <div class="text-block">
-_________________________________________________________________________   
+________________________________________________________________  
     https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
       a-cd:hasTitle
           https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus .
-_________________________________________________________________________
+________________________________________________________________
       </div>
 
       <div class="text-block">
 Then I asked ChatGPT to provide some information about the painting. It told me that the version that I found was made in 1606 and that there is another version of the painting, which was made earlier: <a href="https://en.wikipedia.org/wiki/Supper_at_Emmaus_(Caravaggio,_London)">Supper at Emmaus (1601)</a>. I asked to make a triple to connect these two versions:
       </div>
           <div class="text-block">
-_________________________________________________________________________
-            
+_________________________________________________________________     
 @prefix a-cd: https://w3id.org/arco/ontology/context-description/ .
 
 https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
     a-cd:hasRelatedWork
     https://www.wikidata.org/entity/Q1153292 .
-_________________________________________________________________________
+_________________________________________________________________
           </div>
     
     <h2>Conclusion</h2>
