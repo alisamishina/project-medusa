@@ -95,9 +95,9 @@ The result of the query is pretty good, it gives only three links. One of them h
       <p>
         <a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0300180398.html">Link</a>
       </p>
-    <p>________________________________________________________________________________________</p>
+    <p>_______________________________________________________________________</p>
 
-    <h1>Identifying gaps</h1>
+    <h1>Identifying Gaps and Creating New Triples</h1>
     
     <div class="text-block">
 After examining the page I noticed that there is no alternative name in English. To check if it is true, I made a query:
@@ -145,8 +145,42 @@ LIMIT 100
 SPARQL | HTML5 table
 painting	label
         </div>
-      </article> 
-    
+      </article>
+
+    <h2>New triple</h2>
+      <div class="text-block">
+In order to create new triple I decided to use ChatGPT. I wrote the a prompt:
+      </div>
+        <p>
+          <img src="images/screen4.jpg" style="width: 600px;">
+        </p>
+        <p>It gave me two versions of triples:</p>
+    <P>_________________________________________________________________________</P>
+          <div class="text-block">
+@prefix a-cd: https://w3id.org/arco/ontology/context-description/ .
+@prefix rdfs: http://www.w3.org/2000/01/rdf-schema# .
+
+https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
+    a-cd:hasTitle
+        https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus .
+
+https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus
+    a a-cd:Title ;
+    rdfs:label "Supper at Emmaus"@en ;
+    a-cd:isTitleOf
+        https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398 .
+          </div>
+    <P>_________________________________________________________________________</P>
+    <div class="text-block">
+    <p>and a simpler one</p>
+    </div>
+    <P>_________________________________________________________________________</P>
+          <div class="text-block">
+https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
+    a-cd:hasTitle
+        https://w3id.org/arco/resource/Title/0300180398-alt-en-supper-at-emmaus .
+          </div>
+    <P>_________________________________________________________________________</P>
     
   </main>
 
