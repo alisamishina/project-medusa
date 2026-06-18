@@ -99,6 +99,36 @@ WHERE {
 <h1 style="text-align: center; margin-bottom: 30px;">
   IDENTIFYING THE GAPS AND CREATING NEW TRIPLES
 </h1>
+    <div class="text-block">
+  To enrich the Knowledge Graph, I extend the dataset by adding a structured representation of the author based on external Linked Open Data sources (Wikidata). Instead of treating the author as a simple literal string, I model it as a reusable semantic entity.
+  <br><br>
+
+  The painting is linked to:
+  <ul>
+    <li>Michelangelo Merisi da Caravaggio (Wikidata entity: Q42207)</li>
+  </ul>
+
+  This approach allows the author to be consistently identified across different datasets and cultural heritage records.
+  <br><br>
+
+  Finally, I represent this information as RDF triples using the ArCo ontology and standard RDF vocabularies:
+</div>
+
+<article class="project-card">
+  <div class="text-block">
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+:Painting_L0030-00020_R03
+    a arco:HistoricOrArtisticProperty ;
+    arco:hasAuthor &lt;https://www.wikidata.org/entity/Q42207&gt; .
+
+&lt;https://www.wikidata.org/entity/Q42207&gt;
+    a foaf:Person ;
+    rdfs:label "Michelangelo Merisi da Caravaggio" .
+  </div>
+</article>
     <h2>
   First gap (RDF modeling gap — Author / contextual attribution)
 </h2>
