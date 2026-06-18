@@ -107,17 +107,13 @@ WHERE {
   To enrich the Knowledge Graph, I use an LLM to extract and formalize the author information from the cultural heritage record. Instead of treating the author as a simple literal string, the model helps transform it into a structured semantic entity based on external Linked Open Data sources (Wikidata).
   <br><br>
     <div class="text-block">
-  To enrich the Knowledge Graph, I use an LLM to extract and formalize the author information from the cultural heritage record. Instead of treating the author as a simple literal string, the model helps transform it into a structured semantic entity based on external Linked Open Data sources (Wikidata).
+      The LLM identifies and standardizes the author as:
   <br><br>
-
-  The LLM identifies and standardizes the author as:
   <ul>
     <li>Michelangelo Merisi da Caravaggio (Wikidata entity: Q42207)</li>
   </ul>
-
   This approach ensures that the author is not only described as text, but also represented as a reusable and globally identifiable entity across different knowledge graphs.
   <br><br>
-
   Finally, I ask the LLM to convert this enriched information into RDF triples using the ArCo ontology:
 </div>
 
