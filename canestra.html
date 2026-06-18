@@ -100,42 +100,12 @@ WHERE {
   IDENTIFYING THE GAPS AND CREATING NEW TRIPLES
 </h1>
     <div class="text-block">
-  To enrich the Knowledge Graph, I extend the dataset by adding a structured representation of the author based on external Linked Open Data sources (Wikidata). Instead of treating the author as a simple literal string, I model it as a reusable semantic entity.
-  <br><br>
-
-  The painting is linked to:
-  <ul>
-    <li>Michelangelo Merisi da Caravaggio (Wikidata entity: Q42207)</li>
-  </ul>
-
-  This approach allows the author to be consistently identified across different datasets and cultural heritage records.
-  <br><br>
-
-  Finally, I represent this information as RDF triples using the ArCo ontology and standard RDF vocabularies:
-</div>
-
-<article class="project-card">
-  <div class="text-block">
-PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-
-:Painting_L0030-00020_R03
-    a arco:HistoricOrArtisticProperty ;
-    arco:hasAuthor &lt;https://www.wikidata.org/entity/Q42207&gt; .
-
-&lt;https://www.wikidata.org/entity/Q42207&gt;
-    a foaf:Person ;
-    rdfs:label "Michelangelo Merisi da Caravaggio" .
-  </div>
-</article>
-    <h2>
   First gap (RDF modeling gap — Author / contextual attribution)
-</h2>
 
-<div class="text-block">
   During the analysis of the resource L0030-00020_R03, we identified a significant missing contextual modeling detail regarding the authorship of the cultural property. The resource refers to the artwork in a simplified manner and does not fully represent the author as a structured semantic entity within the knowledge graph. In many ArCo records, the author is either weakly modeled (e.g., only as a literal string in rdfs:label) or not explicitly connected to a dedicated Agent node with proper identity and reuse across other cultural heritage objects. This leads to a loss of semantic richness, since it becomes impossible to: link the author to other artworks in the graph, perform advanced SPARQL queries across the author’s production, integrate external linked open data sources such as Wikidata.
-</div>
+
+  To enrich the Knowledge Graph, I use an LLM to extract and formalize the author information from the cultural heritage record. Instead of treating the author as a simple literal string, the model helps transform it into a structured semantic entity based on external Linked Open Data sources (Wikidata).
+  <br><br>
     <div class="text-block">
   To enrich the Knowledge Graph, I use an LLM to extract and formalize the author information from the cultural heritage record. Instead of treating the author as a simple literal string, the model helps transform it into a structured semantic entity based on external Linked Open Data sources (Wikidata).
   <br><br>
