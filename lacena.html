@@ -96,6 +96,50 @@ The result of the query is pretty good, it gives only three links. One of them h
         <a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0300180398.html">Link</a>
       </p>
 
+    <h2>Identufying gaps</h2>
+    
+    <div class="text-block">
+After examining the page I noticed that there is no alternative name in English. To check if it is true, I made a query:
+
+SELECT ?label
+WHERE {
+  https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
+    rdfs:label ?label .
+
+  FILTER(LANG(?label) = "en")
+}
+    </div>
+
+    <div class="text-block">
+    SPARQL | HTML5 table
+label
+"La Cena in Emmaus, cena in Emmaus (dipinto, opera isolata) by Merisi Michelangelo detto Caravaggio (sec. XVII)"@en
+
+The result shows us the name in Italian
+    </div>
+
+    <div class="text-block">
+    If I make another query using English name, 
+
+PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+PREFIX arco: https://w3id.org/arco/ontology/arco/
+SELECT DISTINCT ?painting ?label
+WHERE {
+  ?painting a arco:HistoricOrArtisticProperty ;
+         rdfs:label ?label .
+  FILTER(REGEX(?label, "supper at emmaus", "i"))
+}
+
+LIMIT 100
+      
+      the search produces no result:
+
+      SPARQL | HTML5 table
+painting	label
+      
+    </div>
+    
+    
   </main>
 
   <footer>
