@@ -100,6 +100,7 @@ The result of the query is pretty good, it gives only three links. One of them h
     
     <div class="text-block">
 After examining the page I noticed that there is no alternative name in English. To check if it is true, I made a query:
+    </div>
       <article class="project-card">      
         <div class="text-block">
   SELECT ?label
@@ -111,20 +112,18 @@ After examining the page I noticed that there is no alternative name in English.
   }
         </div>
       </article>
-    </div>
 
-    <article class="project-card">      
-      <div class="text-block">
-    SPARQL | HTML5 table
-label
-"La Cena in Emmaus, cena in Emmaus (dipinto, opera isolata) by Merisi Michelangelo detto Caravaggio (sec. XVII)"@en
-      </div>
-    </article>
+      <article class="project-card">      
+        <div class="text-block">
+          SPARQL | HTML5 table
+  label
+  "La Cena in Emmaus, cena in Emmaus (dipinto, opera isolata) by Merisi Michelangelo detto Caravaggio (sec. XVII)"@en
+        </div>
+      </article>
 
-<p>The result shows the name in Italian</p>
+    <p>The result shows the name in Italian</p>
 
-    <div class="text-block">
-    If I make another query using English name, 
+    <p>If I make another query using English name,</p>
       <article class="project-card">      
         <div class="text-block">
 PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
@@ -139,16 +138,13 @@ WHERE {
 LIMIT 100
         </div>
       </article>
-      
-    the search produces no result:
-      
+      <p>the search produces no result:</p>
       <article class="project-card">      
         <div class="text-block">
 SPARQL | HTML5 table
 painting	label
         </div>
       </article> 
-    </div>
     
     
   </main>
