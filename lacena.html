@@ -32,7 +32,9 @@
       <div class="text-block">
 I chose the painting called Supper in Emmaus. First, I try to find it in the ARCO ontology using only the name:
       </div>
-
+    
+  <h3>Query 1</h3>
+    
     <article class="project-card">      
       <div class="text-block">
 PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
@@ -47,15 +49,17 @@ WHERE {
 LIMIT 100
       </div>
     </article>
-    <p>Result</p>
+    <p>Result 1</p>
     <p>
-      <img source=images/screen1.jpg>
+      <img src="images/screen1.jpg" alt="Screen1" style="width: 650px;">
     </p>
     
       <div class="text-block">
 If we write only the name of the painting, there are too many results, because there are multiple different works with the same name. 
 So I narrow it down by adding the author, Caravaggio, and language of the page - English
       </div>
+    
+  <h3>Query 2</h3>
 
     <article class="project-card">      
       <div class="text-block">
@@ -76,9 +80,17 @@ LIMIT 10
       </div>
     </article>
 
+    <p>Result 2</p>
+    <p>
+      <img src="images/screen2.jpg" alt="Screen2" style="width: 650px;">
+    </p>
+
       <div class="text-block">
 The result of the query is pretty good, it gives only three links. One of them has the author name just Caravaggio, while the other two have Merisi Michelangelo Detto Caravaggio
       </div>
+    <p>
+      <img src="images/screen3.jpg" alt="Screen3" style="width: 650px;">
+    </p>
     
   </main>
 
