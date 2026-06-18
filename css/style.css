@@ -16,7 +16,7 @@ body {
 
 header {
   background: #380e17;
-
+  padding: 2rem;
 }
 
 nav ul {
@@ -28,7 +28,7 @@ nav ul {
 nav a {
   color: #dbd8c1;
   text-decoration: none;
-  font-family: 'Georgia', sans-serif;
+  font-family: 'Calibri', sans-serif;
   font-size: 0.90rem;
   letter-spacing: 0.05em;
   transition: color 0.2s;
