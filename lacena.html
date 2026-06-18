@@ -96,31 +96,37 @@ The result of the query is pretty good, it gives only three links. One of them h
         <a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0300180398.html">Link</a>
       </p>
 
-    <h2>Identufying gaps</h2>
+    <h2>Identifying gaps</h2>
     
     <div class="text-block">
 After examining the page I noticed that there is no alternative name in English. To check if it is true, I made a query:
-
-SELECT ?label
-WHERE {
-  https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
-    rdfs:label ?label .
-
-  FILTER(LANG(?label) = "en")
-}
+      <article class="project-card">      
+        <div class="text-block">
+  SELECT ?label
+  WHERE {
+    https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300180398
+      rdfs:label ?label .
+  
+    FILTER(LANG(?label) = "en")
+  }
+        </div>
+      </article>
     </div>
 
-    <div class="text-block">
+    <article class="project-card">      
+      <div class="text-block">
     SPARQL | HTML5 table
 label
 "La Cena in Emmaus, cena in Emmaus (dipinto, opera isolata) by Merisi Michelangelo detto Caravaggio (sec. XVII)"@en
+      </div>
+    </article>
 
-The result shows us the name in Italian
-    </div>
+<p>The result shows us the name in Italian</p>
 
     <div class="text-block">
     If I make another query using English name, 
-
+      <article class="project-card">      
+        <div class="text-block">
 PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
 PREFIX arco: https://w3id.org/arco/ontology/arco/
 SELECT DISTINCT ?painting ?label
@@ -131,14 +137,20 @@ WHERE {
 }
 
 LIMIT 100
-    </div>
-      
-    <div class="text-block">
+        </div>
+      </article>
     the search produces no result:
-
-      SPARQL | HTML5 table
-painting	label
       
+      <article class="project-card">      
+        <div class="text-block">
+      SPARQL | HTML5 table
+  label
+  "La Cena in Emmaus, cena in Emmaus (dipinto, opera isolata) by Merisi Michelangelo detto Caravaggio (sec. XVII)"@en
+        </div>
+      </article> 
+    </div>
+
+
     </div>
     
     
